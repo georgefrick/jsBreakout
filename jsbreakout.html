@@ -1,0 +1,55 @@
+<!--
+  George Frick
+  jsBreakout!
+  Spring 2009
+  An adventure in learning jQuery, more Javascript, and some CSS sprites.
+-->
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <script src="lib/jquery.js"></script>
+    <script src="js/breakout.js"></script>
+    <link rel="stylesheet" href="/style/breakout.css" type="text/css">
+</head>
+<body>
+<div id="console">
+    <div id="game" class="screen">
+    </div>
+</div>
+<div style=" position: absolute; top: 50px; left: 500px;">
+    jsBreakout! by George Frick.<br/>
+    Click in the game area to get started.
+    <hr/>
+    <ol>
+        <li>Left & Right Arrow to move paddle.</li>
+        <li>Space Bar to launch the ball.</li>
+    </ol>
+</div>
+</body>
+<script>
+
+
+    $(document).ready(function () {
+        var theGame = new jsgame();
+        theGame.setup();
+        theGame.initTitle();
+
+        $(window).keydown(function (e) {
+            theGame.keyDownHandler(e, theGame)
+        });
+        $(window).keyup(function (e) {
+            theGame.keyUpHandler(e, theGame)
+        });
+
+        window.setInterval(function () {
+            theGame.gameLoop();
+            return this;
+        }, 10);
+    });
+
+</script>
+</html>
+
+
